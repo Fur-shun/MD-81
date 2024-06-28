@@ -1,0 +1,3604 @@
+A
+1000
+ACF_SOUNDS
+
+#################################################
+# McDonnell-Douglas MD80 sound bank             #
+# 1.0.1                                         #
+# Daniela Rodriguez <daniela@x-plane.com>       #
+# Laminar Research                              #
+#################################################
+
+# .........--------======== THIS IS A GENERATED FILE. DO NOT EDIT ==========--------......... 
+#############################################################################################
+
+DISABLE_LEGACY_ALERT_SOUNDS
+
+# Spaces 
+#############################################################################################
+
+# -------------------- Cockpit ---------------------
+BEGIN_SOUND_SPACE
+	SOUND_INDEX 0
+	BLEND_DEPTH 0.1
+	AABB -1.520 -0.900 -21.030 1.520 2.540 -18.760
+END_SOUND_SPACE
+
+# -------------------- Passenger cabin ---------------------
+BEGIN_SOUND_SPACE
+	SOUND_INDEX 1
+	BLEND_DEPTH 0.1
+	AABB -1.620 -0.900 -18.960 1.620 2.480 15.030
+END_SOUND_SPACE
+
+# Snapshots 
+#############################################################################################
+
+# -------------------- Mute sounds during initialization ---------------------
+BEGIN_SOUND_ATTACHMENT
+	SNAPSHOT_NAME /ducker
+	EVENT_START_COND sim/time/total_flight_time_sec > 0
+	EVENT_END_COND sim/time/total_flight_time_sec > 5
+END_SOUND_ATTACHMENT
+
+# -------------------- Cockpit ---------------------
+BEGIN_SOUND_ATTACHMENT
+	SNAPSHOT_NAME /in_cockpit
+	VEH_XYZ 0.000 1.613 -18.860
+	EVENT_START_COND sim/operation/sound/inside_ratio[0] != 0
+	EVENT_END_COND sim/operation/sound/inside_ratio[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Cockpit window (from cockpit) ---------------------
+BEGIN_SOUND_ATTACHMENT
+	SNAPSHOT_NAME /in_cockpit_cockpit_window
+	VEH_XYZ -0.826 1.560 -19.935
+	EVENT_START_COND sim/operation/sound/inside_ratio[0] > 0
+	EVENT_START_COND sim/flightmodel2/misc/custom_slider_ratio[5] > 0
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+
+# -------------------- Fwd port door (from cockpit) ---------------------
+BEGIN_SOUND_ATTACHMENT
+	SNAPSHOT_NAME /in_cockpit_door_fwd
+	VEH_XYZ 0.000 1.613 -18.860
+	PARAM_DREF_IDX 0
+	EVENT_START_COND sim/operation/sound/inside_ratio[0] > 0
+	EVENT_START_COND sim/flightmodel2/misc/custom_slider_ratio[0] > 0
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+
+# -------------------- Fwd starboard door (from cockpit) ---------------------
+BEGIN_SOUND_ATTACHMENT
+	SNAPSHOT_NAME /in_cockpit_door_fwd
+	VEH_XYZ 0.000 1.613 -18.860
+	PARAM_DREF_IDX 6
+	EVENT_START_COND sim/operation/sound/inside_ratio[0] > 0
+	EVENT_START_COND sim/flightmodel2/misc/custom_slider_ratio[6] > 0
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+
+# -------------------- Cabin ---------------------
+BEGIN_SOUND_ATTACHMENT
+	SNAPSHOT_NAME /in_cabin
+	VEH_XYZ 0.000 1.970 -18.960
+	EVENT_START_COND sim/operation/sound/inside_ratio[1] != 0
+	EVENT_END_COND sim/operation/sound/inside_ratio[1] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Cockpit window (from cabin) ---------------------
+BEGIN_SOUND_ATTACHMENT
+	SNAPSHOT_NAME /in_cabin_cockpit_window
+	VEH_XYZ 0.000 1.970 -18.960
+	EVENT_START_COND sim/operation/sound/inside_ratio[1] > 0
+	EVENT_START_COND sim/flightmodel2/misc/custom_slider_ratio[5] > 0
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+
+# -------------------- Fwd port door (from cabin) ---------------------
+BEGIN_SOUND_ATTACHMENT
+	SNAPSHOT_NAME /in_cabin_door_fwd
+	VEH_XYZ -1.418 1.335 -18.434
+	PARAM_DREF_IDX 0
+	EVENT_START_COND sim/operation/sound/inside_ratio[1] > 0
+	EVENT_START_COND sim/flightmodel2/misc/custom_slider_ratio[0] > 0
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+
+# -------------------- Fwd starboard door (from cabin) ---------------------
+BEGIN_SOUND_ATTACHMENT
+	SNAPSHOT_NAME /in_cabin_door_fwd
+	VEH_XYZ 1.418 1.196 -18.416
+	PARAM_DREF_IDX 6
+	EVENT_START_COND sim/operation/sound/inside_ratio[1] > 0
+	EVENT_START_COND sim/flightmodel2/misc/custom_slider_ratio[6] > 0
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+
+# -------------------- Aft door - external w/stairs (from cabin) ---------------------
+BEGIN_SOUND_ATTACHMENT
+	SNAPSHOT_NAME /in_cabin_door_aft_ext
+	VEH_XYZ 0.000 1.500 15.030
+	PARAM_DREF_IDX 3
+	EVENT_START_COND sim/operation/sound/inside_ratio[1] > 0
+	EVENT_START_COND sim/flightmodel2/misc/custom_slider_ratio[3] > 0
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+
+# Engines 
+#############################################################################################
+
+# -------------------- Engine 1 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/engines/engine_1
+	VEH_PART engine 0
+	EVENT_ALLOWED_FOR_AI
+	PARAM_DREF_IDX 0
+	EVENT_START_COND sim/flightmodel2/engines/N2_percent[0] != 0
+	EVENT_END_COND sim/flightmodel2/engines/N2_percent[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Start valve ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/engines/start_valve
+	VEH_PART engine 0
+	EVENT_ALLOWED_FOR_AI
+	PARAM_DREF_IDX 0
+	EVENT_START_COND sim/flightmodel2/engines/starter_is_running[0] != 0
+	EVENT_END_COND sim/flightmodel2/engines/starter_is_running[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Ignition ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/engines/ignition
+	VEH_PART engine 0
+	PARAM_DREF_IDX 0
+	EVENT_START_COND sim/flightmodel2/engines/engine_is_burning_fuel[0] == 1
+	EVENT_END_COND sim/flightmodel2/engines/engine_is_burning_fuel[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Engine 2 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/engines/engine_2
+	VEH_PART engine 1
+	EVENT_ALLOWED_FOR_AI
+	PARAM_DREF_IDX 1
+	EVENT_START_COND sim/flightmodel2/engines/N2_percent[1] != 0
+	EVENT_END_COND sim/flightmodel2/engines/N2_percent[1] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Start valve ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/engines/start_valve
+	VEH_PART engine 1
+	EVENT_ALLOWED_FOR_AI
+	PARAM_DREF_IDX 1
+	EVENT_START_COND sim/flightmodel2/engines/starter_is_running[1] != 0
+	EVENT_END_COND sim/flightmodel2/engines/starter_is_running[1] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Ignition ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/engines/ignition
+	VEH_PART engine 1
+	PARAM_DREF_IDX 1
+	EVENT_START_COND sim/flightmodel2/engines/engine_is_burning_fuel[1] == 1
+	EVENT_END_COND sim/flightmodel2/engines/engine_is_burning_fuel[1] == 0
+END_SOUND_ATTACHMENT
+
+# Environment 
+#############################################################################################
+
+# -------------------- Wind (cockpit) ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/air/airflow
+	VEH_XYZ 0.000 1.503 -20.682
+	EVENT_START_COND sim/flightmodel/position/indicated_airspeed > 0
+	EVENT_START_COND sim/flightmodel/position/true_airspeed > 2
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+
+# -------------------- Wind (cabin) ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/air/airflow_cabin
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND sim/flightmodel/position/indicated_airspeed > 0
+	EVENT_START_COND sim/flightmodel/position/true_airspeed > 2
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+
+# -------------------- Gear airflow ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/air/gear_airflow
+	VEH_XYZ 0.000 -0.096 -20.799
+	EVENT_START_COND sim/flightmodel2/gear/deploy_ratio[0] > 0
+	EVENT_START_COND sim/flightmodel/position/true_airspeed > 2
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+
+# -------------------- Spoiler drag ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/air/spoiler_drag
+	VEH_XYZ 0.000 0.000 0.000
+	PARAM_DREF_IDX 0
+	EVENT_START_COND sim/flightmodel2/wing/spoiler1_deg[0] != 0
+	EVENT_END_COND sim/flightmodel2/wing/spoiler1_deg[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Flaps drag ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/air/flaps_drag
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND sim/cockpit2/controls/flap_ratio != 0
+	EVENT_END_COND sim/cockpit2/controls/flap_ratio == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Front gear stowed ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/ground/front_gear_stowed
+	VEH_XYZ 0.000 -0.096 -20.799
+	EVENT_START_COND DELTA=sim/flightmodel2/gear/deploy_ratio[0] < 0
+	EVENT_START_COND sim/flightmodel2/gear/deploy_ratio[0] < 0.2
+	EVENT_END_COND DELTA=sim/flightmodel2/gear/deploy_ratio[0] >= 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Rain int ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/ground/rain_int
+	VEH_PART cockpit 0
+	PARAM_DREF_IDX 0
+	EVENT_START_COND sim/weather/precipitation_on_aircraft_ratio != 0
+	EVENT_END_COND sim/weather/precipitation_on_aircraft_ratio == 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/ground/crash
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND sim/flightmodel/failures/onground_any == 1
+	EVENT_START_COND sim/flightmodel/ground/surface_texture_type == 1
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/ground/crash
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND sim/flightmodel/failures/onground_any == 1
+	EVENT_START_COND sim/flightmodel/ground/surface_texture_type == 7
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/ground/crash
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND sim/flightmodel2/misc/has_crashed == 1
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/ground/water_land
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND sim/flightmodel/failures/onground_any == 1
+	EVENT_START_COND sim/flightmodel/ground/surface_texture_type == 1
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/ground/water_land
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND sim/flightmodel/failures/onground_any == 1
+	EVENT_START_COND sim/flightmodel/ground/surface_texture_type == 7
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/ground/belly_land
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND sim/aircraft/parts/acf_gear_deploy[0] < 0.2
+	EVENT_START_COND sim/aircraft/parts/acf_gear_deploy[1] < 0.2
+	EVENT_START_COND sim/flightmodel/failures/onground_any == 1
+	EVENT_START_COND sim/flightmodel/ground/surface_texture_type != 7
+	EVENT_START_COND sim/flightmodel/ground/surface_texture_type != 1
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+
+# -------------------- Tire roll 1 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/ground/tire_roll_front
+	VEH_PART tire 0
+	PARAM_DREF_IDX 0
+	EVENT_START_COND sim/aircraft/parts/acf_gear_deploy[0] > 0.2
+	EVENT_START_COND sim/flightmodel2/gear/tire_rotation_speed_rad_sec[0] > 0.2
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/ground/touch_down_1
+	VEH_PART tire 0
+	PARAM_DREF_IDX 0
+	EVENT_START_COND sim/flightmodel2/gear/total_deflection_rate[0] > 1
+	EVENT_START_COND sim/flightmodel2/gear/tire_vertical_deflection_mtr[0] > 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Tire roll 2 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/ground/tire_roll
+	VEH_PART tire 1
+	PARAM_DREF_IDX 1
+	EVENT_START_COND sim/aircraft/parts/acf_gear_deploy[1] > 0.2
+	EVENT_START_COND sim/flightmodel2/gear/tire_rotation_speed_rad_sec[1] > 0.2
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/ground/touch_down_2
+	VEH_PART tire 1
+	PARAM_DREF_IDX 1
+	EVENT_START_COND sim/flightmodel2/gear/total_deflection_rate[1] > 1
+	EVENT_START_COND sim/flightmodel2/gear/tire_vertical_deflection_mtr[1] > 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Tire roll 3 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/ground/tire_roll
+	VEH_PART tire 2
+	PARAM_DREF_IDX 2
+	EVENT_START_COND sim/aircraft/parts/acf_gear_deploy[2] > 0.2
+	EVENT_START_COND sim/flightmodel2/gear/tire_rotation_speed_rad_sec[2] > 0.2
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/environment/ground/touch_down_3
+	VEH_PART tire 2
+	PARAM_DREF_IDX 2
+	EVENT_START_COND sim/flightmodel2/gear/total_deflection_rate[2] > 1
+	EVENT_START_COND sim/flightmodel2/gear/tire_vertical_deflection_mtr[2] > 0
+END_SOUND_ATTACHMENT
+
+# Equipment 
+#############################################################################################
+
+# -------------------- APU ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/apu/apu
+	VEH_XYZ 1.009 1.369 12.896
+	EVENT_ALLOWED_FOR_AI
+	EVENT_START_COND DELTA=sim/cockpit2/electrical/APU_N1_percent > 0
+	EVENT_END_COND DELTA=sim/cockpit2/electrical/APU_N1_percent < 0
+END_SOUND_ATTACHMENT
+
+# -------------------- APU door open ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/apu/apu_door
+	VEH_XYZ 0.986 1.312 12.673
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/electrical/APU_door > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/electrical/APU_door <= 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Alternator ext ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/avionics/alternator_ext
+	VEH_XYZ -0.782 -0.045 -20.170
+	EVENT_ALLOWED_FOR_AI
+	EVENT_START_COND sim/cockpit2/electrical/battery_on[0] == 1
+	EVENT_END_COND sim/cockpit2/electrical/battery_on[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Alternator int ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/avionics/alternator_int
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND sim/cockpit2/electrical/battery_on[0] == 1
+	EVENT_END_COND sim/cockpit2/electrical/battery_on[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Pack 1 fan ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/air/packs_fan
+	VEH_XYZ -1.359 -0.369 -4.332
+	PARAM_DREF_IDX 0
+	EVENT_START_COND laminar/md82/sound/packs_flow[0] > 0.1
+	EVENT_END_COND laminar/md82/sound/packs_flow[0] < 0.1
+END_SOUND_ATTACHMENT
+
+# -------------------- Pack 2 fan ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/air/packs_fan
+	VEH_XYZ 1.359 -0.369 -4.332
+	PARAM_DREF_IDX 1
+	EVENT_START_COND laminar/md82/sound/packs_flow[1] > 0.1
+	EVENT_END_COND laminar/md82/sound/packs_flow[1] < 0.1
+END_SOUND_ATTACHMENT
+
+# -------------------- Hydraulic ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/pumps/hydraulic
+	VEH_XYZ 0.000 -0.358 1.546
+	EVENT_ALLOWED_FOR_AI
+	EVENT_START_COND sim/cockpit2/switches/electric_hydraulic_pump_on != 0
+	EVENT_END_COND sim/cockpit2/switches/electric_hydraulic_pump_on == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Fuel pump center ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/pumps/fuel
+	VEH_XYZ 0.000 0.013 -0.920
+	EVENT_START_COND sim/cockpit2/fuel/fuel_tank_pump_on[0] == 1
+	EVENT_END_COND sim/cockpit2/fuel/fuel_tank_pump_on[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Fuel pump left ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/pumps/fuel
+	VEH_XYZ -3.809 0.013 -0.920
+	EVENT_ALLOWED_FOR_AI
+	EVENT_START_COND sim/cockpit2/fuel/fuel_tank_pump_on[1] == 1
+	EVENT_END_COND sim/cockpit2/fuel/fuel_tank_pump_on[1] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Fuel pump right ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/pumps/fuel
+	VEH_XYZ 3.809 0.013 -0.920
+	EVENT_ALLOWED_FOR_AI
+	EVENT_START_COND sim/cockpit2/fuel/fuel_tank_pump_on[2] == 1
+	EVENT_END_COND sim/cockpit2/fuel/fuel_tank_pump_on[2] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Flaps motor ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/flaps/flaps
+	VEH_XYZ 0.000 -0.358 1.546
+	PARAM_DREF_IDX 0
+	EVENT_START_COND ABS_DELTA=sim/flightmodel2/wing/flap1_deg[0] > 0
+	EVENT_END_COND ABS_DELTA=sim/flightmodel2/wing/flap1_deg[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Slats motor ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/flaps/slats
+	VEH_XYZ 0.000 -0.358 1.546
+	EVENT_START_COND ABS_DELTA=sim/flightmodel2/controls/slat1_deploy_ratio > 0
+	EVENT_END_COND ABS_DELTA=sim/flightmodel2/controls/slat1_deploy_ratio == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Wipers ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/wipers/wipers
+	VEH_XYZ 0.000 1.503 -20.682
+	EVENT_START_COND sim/cockpit2/switches/wiper_speed > 0
+	EVENT_START_COND sim/cockpit2/electrical/battery_on[0] == 1
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+
+# -------------------- Cockpit door ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/doors/cockpit_open
+	VEH_XYZ 0.000 1.499 -18.912
+	PARAM_DREF_IDX 10
+	EVENT_START_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[10] > 0.01
+	EVENT_END_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[10] <= 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/doors/cockpit_close
+	VEH_XYZ 0.000 1.499 -18.912
+	PARAM_DREF_IDX 10
+	EVENT_START_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[10] < 0
+	EVENT_END_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[10] >= 0.01
+END_SOUND_ATTACHMENT
+
+# -------------------- Cockpit window ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/doors/cockpit_wnd_open
+	VEH_XYZ -0.971 1.310 -20.137
+	PARAM_DREF_IDX 5
+	EVENT_START_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[5] > 0.01
+	EVENT_END_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[5] <= 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/doors/cockpit_wnd_close
+	VEH_XYZ -0.971 1.310 -20.137
+	PARAM_DREF_IDX 5
+	EVENT_START_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[5] < 0
+	EVENT_END_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[5] >= 0.01
+END_SOUND_ATTACHMENT
+
+# -------------------- Cabin door (port fwd) ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/doors/door_1_open
+	VEH_XYZ -1.312 1.254 -18.465
+	PARAM_DREF_IDX 0
+	EVENT_START_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[0] > 0.01
+	EVENT_END_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[0] <= 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/doors/door_1_close
+	VEH_XYZ -1.312 1.254 -18.465
+	PARAM_DREF_IDX 0
+	EVENT_START_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[0] < 0
+	EVENT_END_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[0] >= 0.01
+END_SOUND_ATTACHMENT
+
+# -------------------- Cabin door (starboard fwd) ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/doors/door_2_open
+	VEH_XYZ 1.312 1.254 -18.465
+	PARAM_DREF_IDX 6
+	EVENT_START_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[6] > 0.01
+	EVENT_END_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[6] <= 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/doors/door_2_close
+	VEH_XYZ 1.312 1.254 -18.465
+	PARAM_DREF_IDX 6
+	EVENT_START_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[6] < 0
+	EVENT_END_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[6] >= 0.01
+END_SOUND_ATTACHMENT
+
+# -------------------- Cabin door (aft) ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/doors/door_3_open
+	VEH_XYZ 0.000 1.708 10.992
+	PARAM_DREF_IDX 1
+	EVENT_START_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[1] > 0.01
+	EVENT_END_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[1] <= 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/doors/door_3_close
+	VEH_XYZ 0.000 1.708 10.992
+	PARAM_DREF_IDX 1
+	EVENT_START_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[1] < 0
+	EVENT_END_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[1] >= 0.01
+END_SOUND_ATTACHMENT
+
+# -------------------- Airstairs fwd ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/airstairs/forward_deploy
+	VEH_XYZ -1.486 0.351 -18.456
+	PARAM_DREF_IDX 2
+	EVENT_START_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[2] > 0.01
+	EVENT_END_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[2] <= 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/airstairs/forward_retract
+	VEH_XYZ -1.486 0.351 -18.456
+	PARAM_DREF_IDX 2
+	EVENT_START_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[2] < 0
+	EVENT_END_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[2] >= 0.01
+END_SOUND_ATTACHMENT
+
+# -------------------- Airstairs aft ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/airstairs/aft_deploy
+	VEH_XYZ 0.000 -0.126 13.053
+	PARAM_DREF_IDX 3
+	EVENT_START_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[3] > 0.01
+	EVENT_END_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[3] <= 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/airstairs/aft_retract
+	VEH_XYZ 0.000 -0.126 13.053
+	PARAM_DREF_IDX 3
+	EVENT_START_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[3] < 0
+	EVENT_END_COND DELTA=sim/flightmodel2/misc/custom_slider_ratio[3] >= 0.01
+END_SOUND_ATTACHMENT
+
+# Cockpit 
+#############################################################################################
+
+# -------------------- Battery on ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/avionics/battery_on
+	VEH_XYZ 0.000 1.951 -20.017
+	EVENT_START_COND sim/cockpit2/electrical/battery_on[0] == 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Battery off ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/avionics/battery_off
+	VEH_XYZ 0.000 1.951 -20.017
+	EVENT_START_COND sim/cockpit2/electrical/battery_on[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Avionics fans ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/avionics/avionics_fans
+	VEH_XYZ 0.041 1.215 -20.491
+	EVENT_START_COND sim/cockpit2/switches/avionics_power_on == 1
+	EVENT_END_COND sim/cockpit2/switches/avionics_power_on != 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Avionics apu ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/avionics/avionics_apu
+	VEH_XYZ -0.045 1.951 -20.017
+	EVENT_START_COND sim/cockpit2/switches/avionics_power_on == 1
+	EVENT_START_COND sim/cockpit2/electrical/APU_N1_percent > 50
+	EVENT_AUTO_END_FROM_START_COND
+END_SOUND_ATTACHMENT
+
+# -------------------- Avionics tone ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/avionics/avionics_tone
+	VEH_XYZ 0.150 1.869 -20.124
+	EVENT_START_COND sim/cockpit2/switches/avionics_power_on == 1
+	EVENT_END_COND sim/cockpit2/switches/avionics_power_on != 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Gyro ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/avionics/gyro
+	VEH_XYZ -0.140 1.215 -20.491
+	PARAM_DREF_IDX 0
+	EVENT_START_COND sim/cockpit/gyros/gyr_spin[0] != 0
+	EVENT_END_COND sim/cockpit/gyros/gyr_spin[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Parking brake release ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/parking_brake_release
+	VEH_XYZ -1.008 1.012 -20.234
+	EVENT_START_COND sim/cockpit2/controls/parking_brake_ratio == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Parking brake set ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/parking_brake_set
+	VEH_XYZ -1.008 1.012 -20.234
+	EVENT_START_COND sim/cockpit2/controls/parking_brake_ratio == 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Flaps lever pull ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/flaps_lever_pull
+	VEH_XYZ 0.177 1.029 -20.099
+	EVENT_START_COND laminar/md82/controls/flap_detents == 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Flaps lever release ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/flaps_lever_release
+	VEH_XYZ 0.177 1.029 -20.099
+	EVENT_START_COND laminar/md82/controls/flap_detents == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Flaps lever up ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/flaps_lever_up
+	VEH_XYZ 0.177 1.029 -20.099
+	EVENT_CMND_HOLD_CUE sim/flight_controls/flaps_up
+END_SOUND_ATTACHMENT
+
+# -------------------- Flaps lever down ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/flaps_lever_down
+	VEH_XYZ 0.177 1.029 -20.099
+	EVENT_CMND_HOLD_CUE sim/flight_controls/flaps_down
+END_SOUND_ATTACHMENT
+
+# -------------------- Gear lever up ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/gear_lever_up
+	VEH_XYZ 0.293 1.239 -20.481
+	EVENT_START_COND sim/cockpit2/controls/gear_handle_down == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Gear lever down ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/gear_lever_down
+	VEH_XYZ 0.293 1.239 -20.481
+	EVENT_START_COND sim/cockpit2/controls/gear_handle_down == 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Speedbrake click ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/speedbrake_click
+	VEH_XYZ -0.095 1.040 -20.077
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/controls/speedbrake_ratio > 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Fuel cutoff 1 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/fuel_cutoff_up
+	VEH_XYZ 0.000 1.000 -19.983
+	PARAM_DREF_IDX 0
+	EVENT_START_COND DELTA=sim/cockpit2/engine/actuators/mixture_ratio[0] > 0
+	EVENT_END_COND DELTA=sim/cockpit2/engine/actuators/mixture_ratio[0] <= 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/fuel_cutoff_dn
+	VEH_XYZ 0.000 1.000 -19.983
+	PARAM_DREF_IDX 0
+	EVENT_START_COND DELTA=sim/cockpit2/engine/actuators/mixture_ratio[0] < 0
+	EVENT_END_COND DELTA=sim/cockpit2/engine/actuators/mixture_ratio[0] >= 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Fuel cutoff 2 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/fuel_cutoff_up
+	VEH_XYZ 0.000 1.000 -19.983
+	PARAM_DREF_IDX 1
+	EVENT_START_COND DELTA=sim/cockpit2/engine/actuators/mixture_ratio[1] > 0
+	EVENT_END_COND DELTA=sim/cockpit2/engine/actuators/mixture_ratio[1] <= 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/fuel_cutoff_dn
+	VEH_XYZ 0.000 1.000 -19.983
+	PARAM_DREF_IDX 1
+	EVENT_START_COND DELTA=sim/cockpit2/engine/actuators/mixture_ratio[1] < 0
+	EVENT_END_COND DELTA=sim/cockpit2/engine/actuators/mixture_ratio[1] >= 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Generator ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/relays/generator
+	VEH_XYZ -0.045 1.951 -20.017
+	EVENT_START_COND sim/cockpit2/electrical/generator_amps[0] > 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Generator ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/relays/generator
+	VEH_XYZ -0.045 1.951 -20.017
+	EVENT_START_COND sim/cockpit2/electrical/generator_amps[1] > 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Generator ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/relays/generator
+	VEH_XYZ -0.045 1.951 -20.017
+	EVENT_START_COND sim/cockpit2/electrical/generator_amps[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Generator ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/relays/generator
+	VEH_XYZ -0.045 1.951 -20.017
+	EVENT_START_COND sim/cockpit2/electrical/generator_amps[1] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Throttle lever 1 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/throttle_lever_idle
+	VEH_XYZ 0.000 1.031 -20.071
+	EVENT_START_COND sim/cockpit2/engine/actuators/throttle_ratio[0] == 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/throttle_lever_transit
+	VEH_XYZ 0.000 1.031 -20.071
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/engine/actuators/throttle_ratio[0] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/engine/actuators/throttle_ratio[0] == 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/throttle_lever_full
+	VEH_XYZ 0.000 1.031 -20.071
+	EVENT_START_COND sim/cockpit2/engine/actuators/throttle_ratio[0] == 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Throttle lever 2 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/throttle_lever_idle
+	VEH_XYZ 0.000 1.031 -20.071
+	EVENT_START_COND sim/cockpit2/engine/actuators/throttle_ratio[1] == 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/throttle_lever_transit
+	VEH_XYZ 0.000 1.031 -20.071
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/engine/actuators/throttle_ratio[1] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/engine/actuators/throttle_ratio[1] == 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/throttle_lever_full
+	VEH_XYZ 0.000 1.031 -20.071
+	EVENT_START_COND sim/cockpit2/engine/actuators/throttle_ratio[1] == 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Bleed lever 1 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/bleed_lever_up
+	VEH_XYZ -0.075 0.774 -19.509
+	EVENT_START_COND laminar/md82/bleedair/engineL_xfeed_lever == 1
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/bleed_lever_dn
+	VEH_XYZ -0.075 0.774 -19.509
+	EVENT_START_COND laminar/md82/bleedair/engineL_xfeed_lever == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Bleed lever 2 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/bleed_lever_up
+	VEH_XYZ 0.075 0.774 -19.509
+	EVENT_START_COND laminar/md82/bleedair/engineR_xfeed_lever == 1
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/levers/bleed_lever_dn
+	VEH_XYZ 0.075 0.774 -19.509
+	EVENT_START_COND laminar/md82/bleedair/engineR_xfeed_lever == 0
+END_SOUND_ATTACHMENT
+
+# Alerts 
+#############################################################################################
+
+# -------------------- Trim horn ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/trim_horn
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/md82/sound/trim_sound == 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Chime low ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/chime_low
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/annunciators/fasten_seatbelt > 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Chime low ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/chime_low
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/annunciators/no_smoking > 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Chime low ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/chime_low
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND sim/cockpit2/electrical/generator_amps[0] > 6
+END_SOUND_ATTACHMENT
+
+# -------------------- Chime low ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/chime_low
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND sim/cockpit2/electrical/generator_amps[1] > 6
+END_SOUND_ATTACHMENT
+
+# -------------------- Chime low ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/chime_low
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND sim/cockpit2/electrical/generator_amps[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Chime low ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/chime_low
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND sim/cockpit2/electrical/generator_amps[1] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Chime high low ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/chime_high_low
+	VEH_XYZ 0.000 0.000 0.000
+	EVENT_START_COND sim/cockpit2/switches/generic_lights_switch[37] == 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Altitude warn ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/altitude_warn
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND sim/cockpit2/gauges/indicators/baro_altimeter_alert_lit_pilot == 1
+	EVENT_START_COND sim/cockpit2/autopilot/autopilot_source == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Altitude warn ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/altitude_warn
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND sim/cockpit2/gauges/indicators/baro_altimeter_alert_lit_copilot == 1
+	EVENT_START_COND sim/cockpit2/autopilot/autopilot_source == 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Fire left eng ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/fire_left_eng
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND sim/cockpit2/annunciators/engine_fire == 1
+	EVENT_END_COND sim/cockpit2/annunciators/engine_fire != 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Fire right eng ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/fire_right_eng
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND sim/cockpit2/annunciators/engine_fire == 2
+	EVENT_END_COND sim/cockpit2/annunciators/engine_fire != 2
+END_SOUND_ATTACHMENT
+
+# -------------------- Fire both eng ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/fire_both_eng
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND sim/cockpit2/annunciators/engine_fire == 3
+	EVENT_END_COND sim/cockpit2/annunciators/engine_fire != 3
+END_SOUND_ATTACHMENT
+
+# -------------------- Fire apu ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/fire_apu
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND sim/operation/failures/rel_apu_fire == 6
+	EVENT_END_COND sim/operation/failures/rel_apu_fire != 6
+END_SOUND_ATTACHMENT
+
+# -------------------- Stall shaker ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/stall_shaker
+	VEH_PART cockpit 0
+	PARAM_DREF_IDX 0
+	EVENT_START_COND sim/cockpit2/annunciators/stall_warning == 1
+	EVENT_END_COND sim/cockpit2/annunciators/stall_warning != 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Overspeed ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/overspeed
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/md82/sound/overspeed_warn == 1
+	EVENT_END_COND laminar/md82/sound/overspeed_warn != 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Overspeed ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/overspeed
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND ABS_DELTA=sim/flightmodel/misc/prop_ospeed_test_timeout > 0
+	EVENT_END_COND ABS_DELTA=sim/flightmodel/misc/prop_ospeed_test_timeout == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Stall warn ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/stall_warn
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND sim/cockpit2/annunciators/stall_warning == 1
+	EVENT_END_COND sim/cockpit2/annunciators/stall_warning != 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Take off config warning ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/config_warn
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/md82/sound/config_warn_any == 1
+	EVENT_END_COND laminar/md82/sound/config_warn_any != 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Cabin altitude warning ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/cabin_alt
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND sim/cockpit2/annunciators/cabin_altitude_12500 == 1
+	EVENT_END_COND sim/cockpit2/annunciators/cabin_altitude_12500 != 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Gear warn ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/gear_warn
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND sim/cockpit2/annunciators/gear_warning_aural != 0
+	EVENT_END_COND sim/cockpit2/annunciators/gear_warning_aural == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Ap disconnect ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/ap_disconnect
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND sim/cockpit/warnings/annunciators/autopilot_disconnect == 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Inner marker ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/inner_marker
+	VEH_XYZ 0.000 2.139 -19.331
+	EVENT_START_COND sim/cockpit2/radios/indicators/inner_marker_lit == 1
+	EVENT_END_COND sim/cockpit2/radios/indicators/inner_marker_lit != 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Middle marker ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/middle_marker
+	VEH_XYZ 0.000 2.139 -19.331
+	EVENT_START_COND sim/cockpit2/radios/indicators/middle_marker_lit == 1
+	EVENT_END_COND sim/cockpit2/radios/indicators/middle_marker_lit != 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Outer marker ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/outer_marker
+	VEH_XYZ 0.000 2.139 -19.331
+	EVENT_START_COND sim/cockpit2/radios/indicators/outer_marker_lit == 1
+	EVENT_END_COND sim/cockpit2/radios/indicators/outer_marker_lit != 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Nav 1 morse ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/morse_1020_short
+	VEH_XYZ 0.000 2.139 -19.331
+	EVENT_START_COND sim/cockpit2/radios/indicators/morse_id_tone_nav1 == 1
+	EVENT_END_COND sim/cockpit2/radios/indicators/morse_id_tone_nav1 != 1
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/morse_1020_long
+	VEH_XYZ 0.000 2.139 -19.331
+	EVENT_START_COND sim/cockpit2/radios/indicators/morse_id_tone_nav1 == 2
+	EVENT_END_COND sim/cockpit2/radios/indicators/morse_id_tone_nav1 != 2
+END_SOUND_ATTACHMENT
+
+# -------------------- Nav 2 morse ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/morse_1020_short
+	VEH_XYZ 0.000 2.139 -19.331
+	EVENT_START_COND sim/cockpit2/radios/indicators/morse_id_tone_nav2 == 1
+	EVENT_END_COND sim/cockpit2/radios/indicators/morse_id_tone_nav2 != 1
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/morse_1020_long
+	VEH_XYZ 0.000 2.139 -19.331
+	EVENT_START_COND sim/cockpit2/radios/indicators/morse_id_tone_nav2 == 2
+	EVENT_END_COND sim/cockpit2/radios/indicators/morse_id_tone_nav2 != 2
+END_SOUND_ATTACHMENT
+
+# -------------------- Adf 1 morse ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/morse_1020_short
+	VEH_XYZ 0.000 2.139 -19.331
+	EVENT_START_COND sim/cockpit2/radios/indicators/morse_id_tone_adf1 == 1
+	EVENT_END_COND sim/cockpit2/radios/indicators/morse_id_tone_adf1 != 1
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/morse_1020_long
+	VEH_XYZ 0.000 2.139 -19.331
+	EVENT_START_COND sim/cockpit2/radios/indicators/morse_id_tone_adf1 == 2
+	EVENT_END_COND sim/cockpit2/radios/indicators/morse_id_tone_adf1 != 2
+END_SOUND_ATTACHMENT
+
+# -------------------- Adf 2 morse ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/morse_1020_short
+	VEH_XYZ 0.000 2.139 -19.331
+	EVENT_START_COND sim/cockpit2/radios/indicators/morse_id_tone_adf2 == 1
+	EVENT_END_COND sim/cockpit2/radios/indicators/morse_id_tone_adf2 != 1
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/morse_1020_long
+	VEH_XYZ 0.000 2.139 -19.331
+	EVENT_START_COND sim/cockpit2/radios/indicators/morse_id_tone_adf2 == 2
+	EVENT_END_COND sim/cockpit2/radios/indicators/morse_id_tone_adf2 != 2
+END_SOUND_ATTACHMENT
+
+# -------------------- Dme morse ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/morse_1350_short
+	VEH_XYZ 0.000 2.139 -19.331
+	EVENT_START_COND sim/cockpit2/radios/indicators/morse_id_tone_dme == 1
+	EVENT_END_COND sim/cockpit2/radios/indicators/morse_id_tone_dme != 1
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/alerts/morse_1350_long
+	VEH_XYZ 0.000 2.139 -19.331
+	EVENT_START_COND sim/cockpit2/radios/indicators/morse_id_tone_dme == 2
+	EVENT_END_COND sim/cockpit2/radios/indicators/morse_id_tone_dme != 2
+END_SOUND_ATTACHMENT
+
+# GPWS 
+#############################################################################################
+
+# -------------------- Callout: pull_up ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/pull_up
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 1
+	EVENT_END_COND laminar/gpws/message != 1
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: minimums ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/minimums
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 7
+	EVENT_END_COND laminar/gpws/message != 7
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: too_low_terrain ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/too_low_terrain
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 10
+	EVENT_END_COND laminar/gpws/message != 10
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: windshear ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/windshear
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 11
+	EVENT_END_COND laminar/gpws/message != 11
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: 10ft ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/10ft
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 12
+	EVENT_END_COND laminar/gpws/message != 12
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: 20ft ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/20ft
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 13
+	EVENT_END_COND laminar/gpws/message != 13
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: 30ft ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/30ft
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 14
+	EVENT_END_COND laminar/gpws/message != 14
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: 40ft ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/40ft
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 15
+	EVENT_END_COND laminar/gpws/message != 15
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: 50ft ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/50ft
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 16
+	EVENT_END_COND laminar/gpws/message != 16
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: 100ft ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/100ft
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 17
+	EVENT_END_COND laminar/gpws/message != 17
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: 200ft ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/200ft
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 18
+	EVENT_END_COND laminar/gpws/message != 18
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: 300ft ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/300ft
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 19
+	EVENT_END_COND laminar/gpws/message != 19
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: 400ft ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/400ft
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 20
+	EVENT_END_COND laminar/gpws/message != 20
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: 500ft ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/500ft
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 21
+	EVENT_END_COND laminar/gpws/message != 21
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: 1000ft ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/1000ft
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 22
+	EVENT_END_COND laminar/gpws/message != 22
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: too_low_flaps ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/too_low_flaps
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 23
+	EVENT_END_COND laminar/gpws/message != 23
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: too_low_gear ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/too_low_gear
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 24
+	EVENT_END_COND laminar/gpws/message != 24
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: sinkrate ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/sinkrate
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 25
+	EVENT_END_COND laminar/gpws/message != 25
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: glideslope ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/glideslope
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 27
+	EVENT_END_COND laminar/gpws/message != 27
+END_SOUND_ATTACHMENT
+
+# -------------------- Callout: bank_angle ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/egpws/bank_angle
+	VEH_XYZ -0.404 1.897 -19.882
+	EVENT_START_COND laminar/gpws/message == 28
+	EVENT_END_COND laminar/gpws/message != 28
+END_SOUND_ATTACHMENT
+
+# Switches: Overhead 
+#############################################################################################
+
+# -------------------- Ext pwr ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ -0.196 2.095 -19.337
+	EVENT_START_COND ABS_DELTA=sim/cockpit/electrical/gpu_on > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit/electrical/gpu_on == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- VHF1 sel ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_audio_sel
+	VEH_XYZ -0.183 2.057 -19.394
+	EVENT_START_COND sim/cockpit2/radios/actuators/audio_com_selection == 6
+END_SOUND_ATTACHMENT
+
+# -------------------- VHF2 sel ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_audio_sel
+	VEH_XYZ -0.183 2.057 -19.394
+	EVENT_START_COND sim/cockpit2/radios/actuators/audio_com_selection == 7
+END_SOUND_ATTACHMENT
+
+# -------------------- Monitor VHF1 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mic_hold
+	VEH_XYZ -0.183 2.057 -19.394
+	EVENT_CMND_HOLD_CUE sim/audio_panel/monitor_audio_com1
+END_SOUND_ATTACHMENT
+
+# -------------------- Monitor VHF2 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mic_hold
+	VEH_XYZ -0.183 2.057 -19.394
+	EVENT_CMND_HOLD_CUE sim/audio_panel/monitor_audio_com2
+END_SOUND_ATTACHMENT
+
+# -------------------- Monitor Nav1 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mic_hold
+	VEH_XYZ -0.183 2.057 -19.394
+	EVENT_CMND_HOLD_CUE sim/audio_panel/monitor_audio_nav1
+END_SOUND_ATTACHMENT
+
+# -------------------- Monitor Nav2 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mic_hold
+	VEH_XYZ -0.183 2.057 -19.394
+	EVENT_CMND_HOLD_CUE sim/audio_panel/monitor_audio_nav2
+END_SOUND_ATTACHMENT
+
+# -------------------- Monitor DME ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mic_hold
+	VEH_XYZ -0.183 2.057 -19.394
+	EVENT_CMND_HOLD_CUE sim/audio_panel/monitor_audio_dme
+END_SOUND_ATTACHMENT
+
+# -------------------- Monitor ADF1 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mic_hold
+	VEH_XYZ -0.183 2.057 -19.394
+	EVENT_CMND_HOLD_CUE sim/audio_panel/monitor_audio_adf1
+END_SOUND_ATTACHMENT
+
+# -------------------- Monitor ADF2 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mic_hold
+	VEH_XYZ -0.183 2.057 -19.394
+	EVENT_CMND_HOLD_CUE sim/audio_panel/monitor_audio_adf2
+END_SOUND_ATTACHMENT
+
+# -------------------- Monitor Mkr ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mic_hold
+	VEH_XYZ -0.183 2.057 -19.394
+	EVENT_CMND_HOLD_CUE sim/audio_panel/monitor_audio_mkr
+END_SOUND_ATTACHMENT
+
+# -------------------- L Gen ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_white
+	VEH_XYZ -0.196 1.856 -19.766
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/electrical/generator_on[0] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/electrical/generator_on[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- R Gen ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_white
+	VEH_XYZ -0.196 1.856 -19.766
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/electrical/generator_on[1] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/electrical/generator_on[1] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- APU Gen ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ -0.196 1.856 -19.766
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/electrical/APU_generator_on > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/electrical/APU_generator_on == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Voltmeter src ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_small_tail
+	VEH_XYZ -0.066 1.913 -19.808
+	EVENT_START_COND ABS_DELTA=laminar/md82/electrical/voltmeter_source > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/electrical/voltmeter_source == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Bus tie APU L ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_white
+	VEH_XYZ -0.197 1.872 -19.917
+	EVENT_START_COND ABS_DELTA=laminar/md82/electrical/cross_tie_APU_L > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/electrical/cross_tie_APU_L == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Bus tie APU R ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_white
+	VEH_XYZ -0.197 1.872 -19.917
+	EVENT_START_COND ABS_DELTA=laminar/md82/electrical/cross_tie_APU_R > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/electrical/cross_tie_APU_R == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Bus tie GPU L ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ -0.197 1.872 -19.917
+	EVENT_START_COND ABS_DELTA=laminar/md82/electrical/cross_tie_GPU_L > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/electrical/cross_tie_GPU_L == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Bus tie GPU R ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ -0.197 1.872 -19.917
+	EVENT_START_COND ABS_DELTA=laminar/md82/electrical/cross_tie_GPU_R > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/electrical/cross_tie_GPU_R == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Bus tie AC ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_white
+	VEH_XYZ -0.202 1.805 -19.953
+	EVENT_START_COND ABS_DELTA=laminar/md82/electrical/cross_tie_AC > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/electrical/cross_tie_AC == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Bus tie DC ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_white
+	VEH_XYZ -0.202 1.805 -19.953
+	EVENT_START_COND ABS_DELTA=laminar/md82/electrical/cross_tie_DC > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/electrical/cross_tie_DC == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Galley pwr ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_white
+	VEH_XYZ -0.281 1.835 -19.938
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/generic_lights_switch[36] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/generic_lights_switch[36] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- APU bleed mode ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ -0.023 1.783 -19.928
+	EVENT_START_COND ABS_DELTA=laminar/md82/bleedair/APU_on > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/bleedair/APU_on == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- APU start ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_apu_off
+	VEH_XYZ -0.023 1.783 -19.928
+	EVENT_START_COND sim/cockpit2/electrical/APU_starter_switch == 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_apu_on
+	VEH_XYZ -0.023 1.783 -19.928
+	EVENT_START_COND sim/cockpit2/electrical/APU_starter_switch == 1
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_apu_start
+	VEH_XYZ -0.023 1.783 -19.928
+	EVENT_START_COND sim/cockpit2/electrical/APU_starter_switch == 2
+END_SOUND_ATTACHMENT
+
+# -------------------- Emer pwr ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_white_big
+	VEH_XYZ -0.023 1.783 -19.928
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/electrical/battery_on[1] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/electrical/battery_on[1] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Start pump ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ -0.221 1.744 -20.029
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/engine/actuators/fuel_pump_on[0] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/engine/actuators/fuel_pump_on[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Ign sys ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_white
+	VEH_XYZ -0.221 1.744 -20.029
+	EVENT_START_COND ABS_DELTA=laminar/md82/ignition_sys > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/ignition_sys == 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/guard_open
+	VEH_XYZ -0.221 1.744 -20.029
+	EVENT_START_COND DELTA=laminar/md82/safeguard[0] > 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/guard_close
+	VEH_XYZ -0.221 1.744 -20.029
+	EVENT_START_COND DELTA=laminar/md82/safeguard[0] < 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_white_hold
+	VEH_XYZ -0.221 1.744 -20.029
+	EVENT_CMND_HOLD_CUE sim/starters/engage_starter_1
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/guard_open
+	VEH_XYZ -0.221 1.744 -20.029
+	EVENT_START_COND DELTA=laminar/md82/safeguard[1] > 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/guard_close
+	VEH_XYZ -0.221 1.744 -20.029
+	EVENT_START_COND DELTA=laminar/md82/safeguard[1] < 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_white_hold
+	VEH_XYZ -0.221 1.744 -20.029
+	EVENT_CMND_HOLD_CUE sim/starters/engage_starter_2
+END_SOUND_ATTACHMENT
+
+# -------------------- Fuel pumps L ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_paddle_white
+	VEH_XYZ -0.094 1.762 -20.044
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/fuel/fuel_tank_pump_on[1] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/fuel/fuel_tank_pump_on[1] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Fuel pumps C ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_paddle_white
+	VEH_XYZ -0.094 1.762 -20.044
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/fuel/fuel_tank_pump_on[0] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/fuel/fuel_tank_pump_on[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Fuel pumps R ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_paddle_white
+	VEH_XYZ -0.094 1.762 -20.044
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/fuel/fuel_tank_pump_on[2] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/fuel/fuel_tank_pump_on[2] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- No smoking ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ -0.267 1.738 -20.157
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/no_smoking > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/no_smoking == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Fasten belts ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ -0.267 1.738 -20.157
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/fasten_seat_belts > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/fasten_seat_belts == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Pitot heat ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_small_tail
+	VEH_XYZ -0.151 1.766 -20.167
+	EVENT_START_COND ABS_DELTA=laminar/md82/ice/heatknob > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/ice/heatknob == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Air foil L sys heat ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ -0.044 1.748 -20.145
+	EVENT_START_COND ABS_DELTA=sim/cockpit/switches/anti_ice_surf_heat_left > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit/switches/anti_ice_surf_heat_left == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Air foil R sys heat ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ -0.044 1.748 -20.145
+	EVENT_START_COND ABS_DELTA=sim/cockpit/switches/anti_ice_surf_heat_right > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit/switches/anti_ice_surf_heat_right == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Window heat ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ -0.044 1.748 -20.145
+	EVENT_START_COND ABS_DELTA=sim/cockpit/switches/anti_ice_window_heat > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit/switches/anti_ice_window_heat == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Eng L heat ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ -0.044 1.748 -20.145
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/ice/ice_inlet_heat_on_per_engine[0] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/ice/ice_inlet_heat_on_per_engine[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Eng R heat ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ -0.044 1.748 -20.145
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/ice/ice_inlet_heat_on_per_engine[1] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/ice/ice_inlet_heat_on_per_engine[1] == 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/guard_open
+	VEH_XYZ 0.223 1.914 -19.720
+	EVENT_START_COND DELTA=laminar/md82/safeguard[2] > 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/guard_close
+	VEH_XYZ 0.223 1.914 -19.720
+	EVENT_START_COND DELTA=laminar/md82/safeguard[2] < 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Cargo door fwd ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ 0.145 1.877 -19.835
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/custom_slider_on[7] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/custom_slider_on[7] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Cargo door mid ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ 0.145 1.877 -19.835
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/custom_slider_on[8] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/custom_slider_on[8] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Cargo door aft ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ 0.145 1.877 -19.835
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/custom_slider_on[9] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/custom_slider_on[9] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Attendant call ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_round_hold
+	VEH_XYZ 0.163 1.845 -19.876
+	EVENT_CMND_HOLD_CUE sim/lights/generic_38_light_tog
+END_SOUND_ATTACHMENT
+
+# -------------------- Antiskid ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ 0.163 1.845 -19.876
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/generic_lights_switch[35] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/generic_lights_switch[35] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Cockpit door lock ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ 0.163 1.845 -19.876
+	EVENT_START_COND ABS_DELTA=laminar/md82/switches/ckpt_door_locked > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/switches/ckpt_door_locked == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Stall test ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_landing
+	VEH_XYZ 0.163 1.845 -19.876
+	EVENT_CMND_DOWN sim/annunciator/test_stall
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_landing
+	VEH_XYZ 0.163 1.845 -19.876
+	EVENT_CMND_UP sim/annunciator/test_stall
+END_SOUND_ATTACHMENT
+
+# -------------------- Yaw damper ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_white
+	VEH_XYZ 0.163 1.845 -19.876
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/yaw_damper_on > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/yaw_damper_on == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Ovsp test ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ 0.163 1.845 -19.876
+	EVENT_CMND_DOWN sim/systems/overspeed_test
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ 0.163 1.845 -19.876
+	EVENT_CMND_UP sim/systems/overspeed_test
+END_SOUND_ATTACHMENT
+
+# -------------------- Logo light ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ 0.163 1.845 -19.876
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/generic_lights_switch[0] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/generic_lights_switch[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- AC L ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ 0.139 1.799 -19.954
+	EVENT_START_COND ABS_DELTA=laminar/md82/bleedair/bleedair_HVAC_L > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/bleedair/bleedair_HVAC_L == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- AC R ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ 0.139 1.799 -19.954
+	EVENT_START_COND ABS_DELTA=laminar/md82/bleedair/bleedair_HVAC_R > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/bleedair/bleedair_HVAC_R == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Temp src ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_small_tail
+	VEH_XYZ 0.139 1.799 -19.954
+	EVENT_START_COND ABS_DELTA=laminar/md82/bleedair/temp_source > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/bleedair/temp_source == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Wipers ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_white
+	VEH_XYZ 0.138 1.730 -20.160
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/wiper_speed > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/wiper_speed == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Lt test ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_round_hold
+	VEH_XYZ 0.257 1.760 -20.157
+	EVENT_CMND_HOLD_CUE sim/annunciator/test_all_annunciators
+END_SOUND_ATTACHMENT
+
+# Switches: Glareshield 
+#############################################################################################
+
+# -------------------- Master caution capt ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_master_hold
+	VEH_XYZ -0.584 1.393 -20.294
+	EVENT_CMND_HOLD_CUE sim/annunciator/clear_master_caution
+END_SOUND_ATTACHMENT
+
+# -------------------- Master warn capt ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_master_hold
+	VEH_XYZ -0.584 1.393 -20.294
+	EVENT_CMND_HOLD_CUE sim/annunciator/clear_master_warning
+END_SOUND_ATTACHMENT
+
+# -------------------- Stick pusher ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_annun
+	VEH_XYZ -0.457 1.421 -20.296
+	EVENT_START_COND ABS_DELTA=sim/aircraft/forcefeedback/acf_ff_stickshaker > 0
+	EVENT_END_COND ABS_DELTA=sim/aircraft/forcefeedback/acf_ff_stickshaker == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Landing lt L ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_landing
+	VEH_XYZ -0.361 1.448 -20.270
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/landing_lights_switch[1] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/landing_lights_switch[1] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Landing lt R ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_landing
+	VEH_XYZ -0.361 1.448 -20.270
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/landing_lights_switch[2] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/landing_lights_switch[2] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Taxi lt ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_landing
+	VEH_XYZ -0.361 1.448 -20.270
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/taxi_light_on > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/taxi_light_on == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Nav1 coarse ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_med_single
+	VEH_XYZ -0.232 1.433 -20.314
+	EVENT_CMND_HOLD_STOP sim/radios/actv_nav1_coarse_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_med_single
+	VEH_XYZ -0.232 1.433 -20.314
+	EVENT_CMND_HOLD_STOP sim/radios/actv_nav1_coarse_down
+END_SOUND_ATTACHMENT
+
+# -------------------- Nav1 fine ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_small_single
+	VEH_XYZ -0.232 1.433 -20.314
+	EVENT_CMND_HOLD_STOP sim/radios/actv_nav1_fine_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_small_single
+	VEH_XYZ -0.232 1.433 -20.314
+	EVENT_CMND_HOLD_STOP sim/radios/actv_nav1_fine_down
+END_SOUND_ATTACHMENT
+
+# -------------------- CRS ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_mcp_single
+	VEH_XYZ -0.232 1.433 -20.314
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/radios/actuators/hsi_obs_deg_mag_pilot > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/radios/actuators/hsi_obs_deg_mag_pilot == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- FD capt ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal_small
+	VEH_XYZ -0.150 1.465 -20.265
+	EVENT_CMND_DOWN sim/autopilot/fdir_toggle
+END_SOUND_ATTACHMENT
+
+# -------------------- SPD SEL ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mcp_hold
+	VEH_XYZ -0.150 1.465 -20.265
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/airspeed_is_knots
+END_SOUND_ATTACHMENT
+
+# -------------------- MACH SEL ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mcp_hold
+	VEH_XYZ -0.150 1.465 -20.265
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/airspeed_is_mach
+END_SOUND_ATTACHMENT
+
+# -------------------- FMS OVD ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mcp_hold
+	VEH_XYZ -0.150 1.465 -20.265
+	EVENT_CMND_HOLD_CUE sim/autopilot/spd_intv
+END_SOUND_ATTACHMENT
+
+# -------------------- EPR LIM ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mcp_hold
+	VEH_XYZ -0.150 1.465 -20.265
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/EPR_lim
+END_SOUND_ATTACHMENT
+
+# -------------------- Airspeed ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_mcp_single
+	VEH_XYZ -0.092 1.437 -20.291
+	EVENT_CMND_HOLD_STOP sim/autopilot/airspeed_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_mcp_single
+	VEH_XYZ -0.092 1.437 -20.291
+	EVENT_CMND_HOLD_STOP sim/autopilot/airspeed_down
+END_SOUND_ATTACHMENT
+
+# -------------------- AT sw ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_paddle_white
+	VEH_XYZ -0.092 1.437 -20.291
+	EVENT_START_COND ABS_DELTA=laminar/md82/autopilot/autothrottle_switch > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/autopilot/autothrottle_switch == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- FMS ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mcp_hold
+	VEH_XYZ -0.054 1.451 -20.290
+	EVENT_CMND_HOLD_CUE sim/autopilot/gpss
+END_SOUND_ATTACHMENT
+
+# -------------------- VOR LOC ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mcp_hold
+	VEH_XYZ -0.054 1.451 -20.290
+	EVENT_CMND_HOLD_CUE sim/autopilot/NAV
+END_SOUND_ATTACHMENT
+
+# -------------------- ILS ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mcp_hold
+	VEH_XYZ -0.054 1.451 -20.290
+	EVENT_CMND_HOLD_CUE sim/autopilot/approach
+END_SOUND_ATTACHMENT
+
+# -------------------- AUTO LAND ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mcp_hold
+	VEH_XYZ -0.054 1.451 -20.290
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/autoland
+END_SOUND_ATTACHMENT
+
+# -------------------- Bank angle ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_small_tail
+	VEH_XYZ 0.008 1.430 -20.296
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/autopilot/bank_angle_mode > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/autopilot/bank_angle_mode == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Heading ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_mcp_single
+	VEH_XYZ 0.008 1.430 -20.296
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/autopilot/heading_dial_deg_mag_pilot > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/autopilot/heading_dial_deg_mag_pilot == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- HDG ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mcp_hold
+	VEH_XYZ 0.008 1.430 -20.296
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/heading_dial_pull
+END_SOUND_ATTACHMENT
+
+# -------------------- Vertical speed ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_vs_single
+	VEH_XYZ 0.008 1.430 -20.296
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/autopilot/vvi_dial_fpm > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/autopilot/vvi_dial_fpm == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- VERT SPD ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mcp_hold
+	VEH_XYZ 0.079 1.442 -20.276
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/vert_spd
+END_SOUND_ATTACHMENT
+
+# -------------------- IAS MACH ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mcp_hold
+	VEH_XYZ 0.079 1.442 -20.276
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/ias_mach
+END_SOUND_ATTACHMENT
+
+# -------------------- VNAV ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mcp_hold
+	VEH_XYZ 0.079 1.442 -20.276
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/vnav
+END_SOUND_ATTACHMENT
+
+# -------------------- ALT HOLD ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mcp_hold
+	VEH_XYZ 0.079 1.442 -20.276
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/alt_hold
+END_SOUND_ATTACHMENT
+
+# -------------------- Nav sel ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_small_tail
+	VEH_XYZ 0.079 1.442 -20.276
+	EVENT_START_COND ABS_DELTA=laminar/md82/autopilot/source_nav > 0
+	EVENT_END_COND ABS_DELTA=laminar/md82/autopilot/source_nav == 0
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_ap_on
+	VEH_XYZ 0.079 1.442 -20.276
+	EVENT_START_COND laminar/md82/autopilot/autopilot_switch == 2
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_ap_off
+	VEH_XYZ 0.079 1.442 -20.276
+	EVENT_START_COND laminar/md82/autopilot/autopilot_switch == 1
+END_SOUND_ATTACHMENT
+
+# -------------------- FD copilot ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal_small
+	VEH_XYZ 0.152 1.430 -20.299
+	EVENT_CMND_DOWN sim/autopilot/fdir2_toggle
+END_SOUND_ATTACHMENT
+
+# -------------------- Altitude ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_mcp_single
+	VEH_XYZ 0.152 1.430 -20.299
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/autopilot/altitude_dial_ft > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/autopilot/altitude_dial_ft == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- LVL change pull ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_landing
+	VEH_XYZ 0.152 1.430 -20.299
+	EVENT_CMND_DOWN laminar/md82cmd/autopilot/alt_dial_pull
+END_SOUND_ATTACHMENT
+
+# -------------------- TURB ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mcp_hold
+	VEH_XYZ 0.152 1.430 -20.299
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/turb
+END_SOUND_ATTACHMENT
+
+# -------------------- Nav2 coarse ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_med_single
+	VEH_XYZ 0.235 1.460 -20.261
+	EVENT_CMND_HOLD_STOP sim/radios/actv_nav2_coarse_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_med_single
+	VEH_XYZ 0.235 1.460 -20.261
+	EVENT_CMND_HOLD_STOP sim/radios/actv_nav2_coarse_down
+END_SOUND_ATTACHMENT
+
+# -------------------- Nav2 fine ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_small_single
+	VEH_XYZ 0.235 1.460 -20.261
+	EVENT_CMND_HOLD_STOP sim/radios/actv_nav2_fine_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_small_single
+	VEH_XYZ 0.235 1.460 -20.261
+	EVENT_CMND_HOLD_STOP sim/radios/actv_nav2_fine_down
+END_SOUND_ATTACHMENT
+
+# -------------------- CRS ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_mcp_single
+	VEH_XYZ 0.235 1.460 -20.261
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/radios/actuators/nav2_obs_deg_mag_pilot > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/radios/actuators/nav2_obs_deg_mag_pilot == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Flood light L ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ 0.361 1.455 -20.269
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/generic_lights_switch[1] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/generic_lights_switch[1] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Flood light R ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ 0.361 1.455 -20.269
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/generic_lights_switch[2] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/generic_lights_switch[2] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Wing nacl ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_white
+	VEH_XYZ 0.361 1.455 -20.269
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/generic_lights_switch[3] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/generic_lights_switch[3] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Anticollision lt ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ 0.361 1.455 -20.269
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/beacon_on > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/beacon_on == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Strobe lt ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_white_hold
+	VEH_XYZ 0.361 1.455 -20.269
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/switches/navstrobe_lights_switch_up
+END_SOUND_ATTACHMENT
+
+# -------------------- Strobe lt ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_white_hold
+	VEH_XYZ 0.361 1.455 -20.269
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/switches/navstrobe_lights_switch_dwn
+END_SOUND_ATTACHMENT
+
+# Switches: EFIS 
+#############################################################################################
+
+# -------------------- EFIS mode ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_small_tail
+	VEH_XYZ -0.928 1.253 -20.137
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/EFIS/map_mode > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/EFIS/map_mode == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- EFIS1 adf/vor ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_small_tail
+	VEH_XYZ -0.928 1.253 -20.137
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/EFIS/EFIS_1_selection_pilot > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/EFIS/EFIS_1_selection_pilot == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- EFIS2 adf/vor ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_small_tail
+	VEH_XYZ -0.928 1.253 -20.137
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/EFIS/EFIS_2_selection_pilot > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/EFIS/EFIS_2_selection_pilot == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- EFIS map range ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_small_tail
+	VEH_XYZ -0.928 1.253 -20.137
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/EFIS/map_range > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/EFIS/map_range == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- WTHR ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_efis_hold
+	VEH_XYZ -0.928 1.253 -20.137
+	EVENT_CMND_HOLD_CUE sim/instruments/EFIS_wxr
+END_SOUND_ATTACHMENT
+
+# -------------------- AIRP ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_efis_hold
+	VEH_XYZ -0.928 1.253 -20.137
+	EVENT_CMND_HOLD_CUE sim/instruments/EFIS_apt
+END_SOUND_ATTACHMENT
+
+# -------------------- NAV ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_efis_hold
+	VEH_XYZ -0.928 1.253 -20.137
+	EVENT_CMND_HOLD_CUE sim/instruments/EFIS_vor
+END_SOUND_ATTACHMENT
+
+# -------------------- WPT ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_efis_hold
+	VEH_XYZ -0.928 1.253 -20.137
+	EVENT_CMND_HOLD_CUE sim/instruments/EFIS_fix
+END_SOUND_ATTACHMENT
+
+# -------------------- EFIS1 adf/vor ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_small_tail
+	VEH_XYZ 0.928 1.253 -20.137
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/EFIS/EFIS_1_selection_copilot > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/EFIS/EFIS_1_selection_copilot == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- EFIS2 adf/vor ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_small_tail
+	VEH_XYZ 0.928 1.253 -20.137
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/EFIS/EFIS_2_selection_copilot > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/EFIS/EFIS_2_selection_copilot == 0
+END_SOUND_ATTACHMENT
+
+# Switches: Main 
+#############################################################################################
+
+# -------------------- Floor light ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal
+	VEH_XYZ -0.901 1.014 -20.362
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/panel_brightness_ratio[2] > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/panel_brightness_ratio[2] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Static air ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_white
+	VEH_XYZ -0.901 1.014 -20.362
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/alternate_static_air_ratio > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/alternate_static_air_ratio == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Timer run ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_xsmall
+	VEH_XYZ -0.789 1.078 -20.401
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/clock_timer/timer_running > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/clock_timer/timer_running == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- GMT ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_xsmall
+	VEH_XYZ -0.789 1.078 -20.401
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/clock_timer/timer_is_GMT > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/clock_timer/timer_is_GMT == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- WTHR ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_simple_hold
+	VEH_XYZ -0.789 1.078 -20.401
+	EVENT_CMND_HOLD_CUE sim/instruments/timer_reset
+END_SOUND_ATTACHMENT
+
+# -------------------- RMI L ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_simple_hold
+	VEH_XYZ -0.696 1.086 -20.383
+	EVENT_CMND_HOLD_CUE sim/radios/RMI_L_tog
+END_SOUND_ATTACHMENT
+
+# -------------------- RMI R ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_simple_hold
+	VEH_XYZ -0.696 1.086 -20.383
+	EVENT_CMND_HOLD_CUE sim/radios/RMI_R_tog
+END_SOUND_ATTACHMENT
+
+# -------------------- TCAS ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_simple_hold
+	VEH_XYZ -0.393 1.095 -20.411
+	EVENT_CMND_HOLD_CUE sim/instruments/EFIS_tcas
+END_SOUND_ATTACHMENT
+
+# -------------------- Test fire 1 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_round_hold
+	VEH_XYZ -0.010 1.360 -20.415
+	EVENT_CMND_HOLD_CUE sim/annunciator/test_fire_1_annun
+END_SOUND_ATTACHMENT
+
+# -------------------- Test fire 2 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_round_hold
+	VEH_XYZ -0.010 1.360 -20.415
+	EVENT_CMND_HOLD_CUE sim/annunciator/test_fire_2_annun
+END_SOUND_ATTACHMENT
+
+# -------------------- Fire handle 1 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/fire_handle_pull_push
+	VEH_XYZ -0.010 1.360 -20.415
+	EVENT_START_COND sim/cockpit2/engine/actuators/fire_extinguisher_on[0] == 1
+	CUE_TRIGGER_COND sim/cockpit2/engine/actuators/fire_extinguisher_on[0] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Fire handle 2 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/fire_handle_pull_push
+	VEH_XYZ -0.010 1.360 -20.415
+	EVENT_START_COND sim/cockpit2/engine/actuators/fire_extinguisher_on[1] == 1
+	CUE_TRIGGER_COND sim/cockpit2/engine/actuators/fire_extinguisher_on[1] == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Eng mode TO ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mic_hold
+	VEH_XYZ 0.180 1.292 -20.317
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/EPR_TO
+END_SOUND_ATTACHMENT
+
+# -------------------- Eng mode TO FLX ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mic_hold
+	VEH_XYZ 0.180 1.292 -20.317
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/EPR_TOFLEX
+END_SOUND_ATTACHMENT
+
+# -------------------- Eng mode GA ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mic_hold
+	VEH_XYZ 0.180 1.292 -20.317
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/EPR_GA
+END_SOUND_ATTACHMENT
+
+# -------------------- Eng mode MCT ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mic_hold
+	VEH_XYZ 0.180 1.292 -20.317
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/EPR_MCT
+END_SOUND_ATTACHMENT
+
+# -------------------- Eng mode CL ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mic_hold
+	VEH_XYZ 0.180 1.292 -20.317
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/EPR_CL
+END_SOUND_ATTACHMENT
+
+# -------------------- Eng mode CR ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_mic_hold
+	VEH_XYZ 0.180 1.292 -20.317
+	EVENT_CMND_HOLD_CUE laminar/md82cmd/autopilot/EPR_CR
+END_SOUND_ATTACHMENT
+
+# -------------------- RMI L ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_simple_hold
+	VEH_XYZ 0.465 1.065 -20.381
+	EVENT_CMND_HOLD_CUE sim/radios/copilot_RMI_L_tog_cop
+END_SOUND_ATTACHMENT
+
+# -------------------- RMI R ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_simple_hold
+	VEH_XYZ 0.465 1.065 -20.381
+	EVENT_CMND_HOLD_CUE sim/radios/copilot_RMI_R_tog_cop
+END_SOUND_ATTACHMENT
+
+# -------------------- Elec hyd pump ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_white
+	VEH_XYZ 0.355 0.984 -20.363
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/electric_hydraulic_pump_on > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/electric_hydraulic_pump_on == 0
+END_SOUND_ATTACHMENT
+
+# Switches: FMC 
+#############################################################################################
+
+# -------------------- FMC 1 side key 1 l ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ -0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS/ls_1l
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 side key 1 r ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ -0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS/ls_1r
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 side key 2 l ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ -0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS/ls_2l
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 side key 2 r ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ -0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS/ls_2r
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 side key 3 l ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ -0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS/ls_3l
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 side key 3 r ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ -0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS/ls_3r
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 side key 4 l ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ -0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS/ls_4l
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 side key 4 r ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ -0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS/ls_4r
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 side key 5 l ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ -0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS/ls_5l
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 side key 5 r ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ -0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS/ls_5r
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 side key 6 l ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ -0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS/ls_6l
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 side key 6 r ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ -0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS/ls_6r
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key index ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/index
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key fpln ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/fpln
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key clb ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/clb
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key crz ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/crz
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key des ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/des
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key dir_intc ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/dir_intc
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key legs ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/legs
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key dep_arr ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/dep_arr
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key hold ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/hold
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key prog ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/prog
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key exec ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/exec
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key fix ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/fix
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key navrad ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/navrad
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key prev ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/prev
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key next ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/next
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_clear ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_clear
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_delete ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_delete
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_space ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_space
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_slash ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_slash
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_minus ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_minus
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_period ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_period
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_0 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_0
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_1 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_1
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_2 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_2
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_3 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_3
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_4 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_4
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_5 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_5
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_6 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_6
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_7 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_7
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_8 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_8
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_9 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_9
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_A ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_A
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_B ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_B
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_C ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_C
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_D ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_D
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_E ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_E
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_F ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_F
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_G ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_G
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_H ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_H
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_I ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_I
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_J ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_J
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_K ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_K
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_L ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_L
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_M ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_M
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_N ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_N
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_O ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_O
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_P ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_P
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_Q ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_Q
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_R ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_R
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_S ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_S
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_T ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_T
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_U ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_U
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_V ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_V
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_W ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_W
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_X ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_X
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_Y ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_Y
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 1 main key key_Z ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ -0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS/key_Z
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 side key 1 l ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ 0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS2/ls_1l
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 side key 1 r ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ 0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS2/ls_1r
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 side key 2 l ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ 0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS2/ls_2l
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 side key 2 r ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ 0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS2/ls_2r
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 side key 3 l ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ 0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS2/ls_3l
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 side key 3 r ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ 0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS2/ls_3r
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 side key 4 l ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ 0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS2/ls_4l
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 side key 4 r ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ 0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS2/ls_4r
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 side key 5 l ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ 0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS2/ls_5l
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 side key 5 r ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ 0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS2/ls_5r
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 side key 6 l ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ 0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS2/ls_6l
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 side key 6 r ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_lat_hold
+	VEH_XYZ 0.222 1.140 -20.337
+	EVENT_CMND_HOLD_CUE sim/FMS2/ls_6r
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key index ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/index
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key fpln ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/fpln
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key clb ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/clb
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key crz ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/crz
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key des ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/des
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key dir_intc ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/dir_intc
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key legs ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/legs
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key dep_arr ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/dep_arr
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key hold ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/hold
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key prog ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/prog
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key exec ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/exec
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key fix ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/fix
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key navrad ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/navrad
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key prev ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/prev
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key next ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/next
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_clear ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_clear
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_delete ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_delete
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_space ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_space
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_slash ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_slash
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_minus ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_minus
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_period ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_period
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_0 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_0
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_1 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_1
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_2 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_2
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_3 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_3
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_4 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_4
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_5 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_5
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_6 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_6
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_7 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_7
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_8 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_8
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_9 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_9
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_A ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_A
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_B ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_B
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_C ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_C
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_D ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_D
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_E ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_E
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_F ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_F
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_G ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_G
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_H ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_H
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_I ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_I
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_J ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_J
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_K ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_K
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_L ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_L
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_M ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_M
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_N ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_N
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_O ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_O
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_P ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_P
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_Q ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_Q
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_R ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_R
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_S ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_S
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_T ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_T
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_U ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_U
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_V ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_V
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_W ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_W
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_X ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_X
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_Y ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_Y
+END_SOUND_ATTACHMENT
+
+# -------------------- FMC 2 main key key_Z ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_fmc_main_hold
+	VEH_XYZ 0.222 1.077 -20.229
+	EVENT_CMND_HOLD_CUE sim/FMS2/key_Z
+END_SOUND_ATTACHMENT
+
+# Switches: Pedestal 
+#############################################################################################
+
+# -------------------- Com1 l coarse ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ -0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com1_left_coarse_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ -0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com1_left_coarse_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- Com1 l fine ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ -0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com1_left_fine_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ -0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com1_left_fine_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- Com1 r coarse ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ -0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com1_right_coarse_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ -0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com1_right_coarse_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- Com1 r fine ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ -0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com1_right_fine_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ -0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com1_right_fine_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- Com1 xfer ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal_xsmall
+	VEH_XYZ -0.107 1.028 -19.864
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/radios/actuators/com1_right_is_selected > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/radios/actuators/com1_right_is_selected == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- Com2 l coarse ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ 0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com2_left_coarse_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ 0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com2_left_coarse_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- Com2 l fine ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ 0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com2_left_fine_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ 0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com2_left_fine_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- Com2 r coarse ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ 0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com2_right_coarse_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ 0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com2_right_coarse_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- Com2 r fine ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ 0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com2_right_fine_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_com_single
+	VEH_XYZ 0.107 1.028 -19.864
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/com2_right_fine_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- Com2 xfer ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal_xsmall
+	VEH_XYZ -0.107 1.028 -19.864
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/radios/actuators/com2_right_is_selected > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/radios/actuators/com2_right_is_selected == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF1 l hundreds ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf1_left_hundreds_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf1_left_hundreds_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF1 l tens ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf1_left_tens_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf1_left_tens_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF1 l ones ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_s_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf1_left_one_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_s_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf1_left_one_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF1 xfer ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal_xsmall
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/radios/actuators/adf1_right_is_selected > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/radios/actuators/adf1_right_is_selected == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF1 tone ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal_xsmall
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/radios/actuators/adf1_power > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/radios/actuators/adf1_power == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF1 r hundreds ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf1_right_hundreds_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf1_right_hundreds_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF1 r tens ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf1_right_tens_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf1_right_tens_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF1 r ones ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_s_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf1_right_one_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_s_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf1_right_one_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF2 l hundreds ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf2_left_hundreds_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf2_left_hundreds_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF2 l tens ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf2_left_tens_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf2_left_tens_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF2 l ones ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_s_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf2_left_one_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_s_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf2_left_one_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF2 xfer ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal_xsmall
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/radios/actuators/adf2_right_is_selected > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/radios/actuators/adf2_right_is_selected == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF2 tone ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/switch_metal_xsmall
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/radios/actuators/adf2_power > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/radios/actuators/adf2_power == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF2 r hundreds ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf2_right_hundreds_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf2_right_hundreds_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF2 r tens ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf2_right_tens_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_l_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf2_right_tens_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- ADF2 r ones ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_s_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf2_right_one_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_adf_s_single
+	VEH_XYZ -0.092 0.998 -19.783
+	EVENT_CMND_HOLD_STOP laminar/md82cmd/radios/adf2_right_one_dwn
+END_SOUND_ATTACHMENT
+
+# -------------------- XPDR mode ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_xsmall
+	VEH_XYZ -0.092 0.959 -19.688
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/radios/actuators/transponder_mode > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/radios/actuators/transponder_mode == 0
+END_SOUND_ATTACHMENT
+
+# -------------------- XPDR 12 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_med_single
+	VEH_XYZ -0.092 0.959 -19.688
+	EVENT_CMND_HOLD_STOP sim/transponder/transponder_12_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_med_single
+	VEH_XYZ -0.092 0.959 -19.688
+	EVENT_CMND_HOLD_STOP sim/transponder/transponder_12_down
+END_SOUND_ATTACHMENT
+
+# -------------------- XPDR 34 ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_small_single
+	VEH_XYZ -0.092 0.959 -19.688
+	EVENT_CMND_HOLD_STOP sim/transponder/transponder_34_up
+END_SOUND_ATTACHMENT
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/rot_small_single
+	VEH_XYZ -0.092 0.959 -19.688
+	EVENT_CMND_HOLD_STOP sim/transponder/transponder_34_down
+END_SOUND_ATTACHMENT
+
+# -------------------- XPDR test ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_simple_hold
+	VEH_XYZ -0.092 0.959 -19.688
+	EVENT_CMND_HOLD_CUE sim/transponder/transponder_test
+END_SOUND_ATTACHMENT
+
+# -------------------- XPDR ident ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/pb_simple_hold
+	VEH_XYZ -0.092 0.959 -19.688
+	EVENT_CMND_HOLD_CUE sim/transponder/transponder_ident
+END_SOUND_ATTACHMENT
+
+# -------------------- Autobrake ---------------------
+BEGIN_SOUND_ATTACHMENT
+	EVENT_NAME /md80/equipment/switches/sel_white
+	VEH_XYZ 0.137 0.891 -19.541
+	EVENT_START_COND ABS_DELTA=sim/cockpit2/switches/auto_brake_level > 0
+	EVENT_END_COND ABS_DELTA=sim/cockpit2/switches/auto_brake_level == 0
+END_SOUND_ATTACHMENT

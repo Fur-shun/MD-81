@@ -1,0 +1,12 @@
+A
+920 version
+
+x	y		// offset of the airplane center from the texture center in pixels
+0	16
+
+range_steps		// number scanning ranges
+3
+
+px 	nm	nm	nm	  // range scale conversion pixels vs NM
+
+58	5	10	15
